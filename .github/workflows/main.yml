@@ -4,10 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       ip:
-        description: "Visitor IP address"
         required: true
       timestamp:
-        description: "Timestamp"
         required: true
 
 jobs:
@@ -16,10 +14,14 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
+
       - run: |
           echo "${{ inputs.ip }} - ${{ inputs.timestamp }}" >> visitors.log
+
+      - run: |
           git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config user.email "action@github.com"
           git add visitors.log
-          git commit -m "Logged visitor IP: ${{ inputs.ip }}" || exit 0
+          git diff --quiet && git diff --staged --quiet || git commit -m "Log visit"
           git push
