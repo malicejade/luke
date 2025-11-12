@@ -18,11 +18,10 @@
                 const timestamp = new Date().toISOString();
 
                 // Trigger GitHub Workflow
-                const response = await fetch("https://api.github.com/repos/malicejade/luke/actions/workflows/206185155/dispatches", {
+                const response = await fetch("https://api.github.com/repos/malicejade/luke/actions/workflows/main.yml/dispatches", {
                     method: "POST",
                     headers: {
                         "Accept": "application/vnd.github.v3+json",
-                        "X-GitHub-Api-Version": "2022-11-28",
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
