@@ -8,10 +8,10 @@ on:
       timestamp:
         required: true
   repository_dispatch:
-    types: [log_visit]
+    types: [visit]
 
 jobs:
-  log_visit:
+  visit:
     runs-on: ubuntu-latest
     permissions:
       contents: write
