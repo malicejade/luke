@@ -25,8 +25,8 @@
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        ref: "main",
-                        inputs: {
+                        event_type: "visit",
+                        client_payload: {
                             ip: ip,
                             timestamp: timestamp
                         }
