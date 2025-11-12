@@ -14,7 +14,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - run: |
           echo "${{ inputs.ip }} - ${{ inputs.timestamp }}" >> visitors.log
@@ -23,5 +27,5 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "action@github.com"
           git add visitors.log
-          git diff --quiet && git diff --staged --quiet || git commit -m "Log visit"
+          git commit data -m "Logged visitor IP address" || true
           git push
