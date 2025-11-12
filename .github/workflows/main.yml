@@ -1,12 +1,6 @@
 name: "Log visitor IP address"
 
 on:
-  workflow_dispatch:
-    inputs:
-      ip:
-        required: true
-      timestamp:
-        required: true
   repository_dispatch:
     types: [visit]
 
